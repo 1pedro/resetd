@@ -30,11 +30,16 @@ text-align: center;">
 
          if(this.readyState == 4 && this.status != 200){
            console.log(this.status);
-           alert("Houve um problema ao resetar. verifique os caracteres da chave.")
+           var resp = JSON.parse(this.responseText)
+           if(resp.message.includes("has not been activated")){
+             alert("Essa chave já foi resetada! Basta ativar na extensão!!")
+           }else{
+            alert("Houve um problema ao resetar. verifique os caracteres da chave.")
+           }
          }
        };
   
-     xhttp.open("POST", `https://dizuplus.com/wp-json/lmfwc/v2/licenses/deactivate/${key}?consumer_key=ck_58196bd73be1addd11afcb259f2b23fd9cd0afa8&consumer_secret=cs_7d42238a69e6eb8ac60d4901c3ae29129d7ec031`, true);
+     xhttp.open("GET", `https://dizuplus.com/wp-json/lmfwc/v2/licenses/deactivate/${key}?consumer_key=ck_58196bd73be1addd11afcb259f2b23fd9cd0afa8&consumer_secret=cs_7d42238a69e6eb8ac60d4901c3ae29129d7ec031`, true);
      xhttp.send();
   }
 </script>
