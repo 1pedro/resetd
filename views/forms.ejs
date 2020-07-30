@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resetar Chave Dizu Plus</title>
+</head>
+<body style="height: 100%;
+width: 400px;
+margin: auto;
+display: block;
+font-family: sans-serif;
+font-size: sans-serif;
+text-align: center;">
+  <h3> Resete sua chave do Dizu Plus!</h3>
+  <input type="text" id="chave" style="width:300px">
+  <button id="reset" onclick="reset()">Resetar</button>
+
+</body>
+<script>
+  // document.addEventListener("DOMContentLoaded", )
+  function reset() {
+    console.log("resetando")
+    var key = document.getElementById("chave").value;
+     var xhttp = new XMLHttpRequest();
+     xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          alert("Sua chave foi resetada com sucesso!")
+         }
+
+         if(this.readyState == 4 && this.status != 200){
+           console.log(this.status);
+           alert("Houve um problema ao resetar. verifique os caracteres da chave.")
+         }
+       };
+  
+     xhttp.open("POST", `http://localhost:9001/reset/${key}`, true);
+     xhttp.send();
+  }
+
+</script>
+
+</html>
