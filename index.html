@@ -39,7 +39,7 @@ text-align: center;">
          }
        };
   
-     xhttp.open("GET", `https://dizuplus.com/wp-json/lmfwc/v2/licenses/deactivate/${key}?consumer_key=ck_58196bd73be1addd11afcb259f2b23fd9cd0afa8&consumer_secret=cs_7d42238a69e6eb8ac60d4901c3ae29129d7ec031`, true);
+     xhttp.open("GET", `https://dizuplus.com/wp-json/lmfwc/v2/licenses/deactivate/${key.replace(' ', '')}?consumer_key=ck_58196bd73be1addd11afcb259f2b23fd9cd0afa8&consumer_secret=cs_7d42238a69e6eb8ac60d4901c3ae29129d7ec031`, true);
      xhttp.send();
   }
 </script>
